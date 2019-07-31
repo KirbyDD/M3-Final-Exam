@@ -1,12 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import AnimalCard from '../AnimalCard/AnimalCard';
+import './AnimalContainer.css'
 
-const AnimalContainer = () => {
-  let list = this.props.animals.map(animal => {
+const AnimalContainer = (props) => {
+  let list = props.animals.map(animal => {
     return <AnimalCard {...animal} key={animal.id}/>
   })
   return (
-    <main>
+    <main className='animal-container'>
       {list}
     </main>
   )

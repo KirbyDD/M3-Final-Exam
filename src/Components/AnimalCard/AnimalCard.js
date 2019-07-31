@@ -1,12 +1,15 @@
 import React from 'react';
+import './AnimalCard.css'
 
 const AnimalCard = (props) => {
   return (
-    <article>
-      <img src={props.img} alt={props.name} /> 
+    <article className='card'>
+      <img src={props.img} alt={props.name} className='animal-img' /> 
       <h2>Name: {props.name}</h2>
-      <p>Species: {props.species}</p>
-      <p>Description: {props.description}</p>
+      <h3>Species:</h3>
+      <p>{props.species}</p>
+      <h3>Description:</h3>
+      <p>{props.description}</p>
     </article>
   )
 }

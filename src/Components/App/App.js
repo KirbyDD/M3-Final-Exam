@@ -3,6 +3,7 @@ import {fetchAnimals} from '../../apiCalls';
 import {connect} from 'react-redux'
 import {gatherData, isLoading, hasErrored} from '../../actions/index'
 import './App.css';
+import AnimalContainer from '../AnimalContainer/AnimalContainer';
 
 class App extends Component {
   constructor() {
@@ -24,6 +25,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Final Exam</h1>
+        <AnimalContainer />
         {this.props.isLoading &&
           <h2>Loading. Please Wait...</h2>
         }
