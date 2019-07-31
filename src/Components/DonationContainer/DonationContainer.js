@@ -9,6 +9,7 @@ const DonationContainer = (props) => {
   })
   return (
     <aside>
+      <h2>List of Donations</h2>
       {list}
     </aside>
   )

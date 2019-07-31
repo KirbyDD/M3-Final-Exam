@@ -1,8 +1,9 @@
 import React from 'react';
+import './Donation.css'
 
 const Donation = (props) => {
   return (
-    <article>
+    <article className='donation'>
       <h3>NAME</h3>
       <p>{props.name}</p>
       <h3>DONATION</h3>
