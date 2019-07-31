@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
-import {fetchAnimals, fetchDonations} from '../../apiCalls';
+import {fetchAnimals, fetchDonations, postDonation} from '../../apiCalls';
 import {connect} from 'react-redux'
 import {gatherData, isLoading, hasErrored, gatherDonations} from '../../actions/index'
 import './App.css';
 import AnimalContainer from '../AnimalContainer/AnimalContainer';
-import DonationContainer from '../DonationContainer/DonationContainer'
+import DonationContainer from '../DonationContainer/DonationContainer';
+import DonationForm from '../DonationForm/DonationForm';
+
 
 class App extends Component {
   constructor() {
@@ -23,12 +25,29 @@ class App extends Component {
       this.props.loading(false)
     } catch {
       this.props.handleError(data)
+      this.props.loading(false)
     }
   }
+
+  postingDonation = async (donation) => {
+    let donations;
+    try {
+      this.props.loading(true)
+      await postDonation(donation)
+      donations = await fetchDonations();
+      this.props.handleSecondFetch(donations)
+      this.props.loading(false)
+    } catch {
+      this.props.handleError('Error Posting Donation')
+      this.props.loading(false)
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Final Exam</h1>
+        <DonationForm postingDonation={this.postingDonation} />
         <div className='main-section-style'>
           <AnimalContainer />
           <DonationContainer />
