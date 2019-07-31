@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {gatherData, isLoading, hasErrored, gatherDonations} from '../../actions/index'
 import './App.css';
 import AnimalContainer from '../AnimalContainer/AnimalContainer';
+import DonationContainer from '../DonationContainer/DonationContainer'
 
 class App extends Component {
   constructor() {

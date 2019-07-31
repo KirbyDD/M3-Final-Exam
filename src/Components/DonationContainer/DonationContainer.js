@@ -1,10 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import './DonatioContainer.css';
+import './DonationContainer.css';
+import Donation from '../Donation/Donation'
 
 const DonationContainer = (props) => {
   let list = props.donations.map(donation => {
-    return <Donation {...donation} />
+    return <Donation {...donation} key={donation.id}/>
   })
   return (
     <aside>
