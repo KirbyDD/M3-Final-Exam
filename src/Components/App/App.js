@@ -28,7 +28,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Final Exam</h1>
-        <AnimalContainer />
+        <div className='main-section-style'>
+          <AnimalContainer />
+          <DonationContainer />
+        </div>
         {this.props.isLoading &&
           <h2>Loading. Please Wait...</h2>
         }
