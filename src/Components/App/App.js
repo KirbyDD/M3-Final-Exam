@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {fetchAnimals} from '../../apiCalls';
+import {fetchAnimals, fetchDonations} from '../../apiCalls';
 import {connect} from 'react-redux'
-import {gatherData, isLoading, hasErrored} from '../../actions/index'
+import {gatherData, isLoading, hasErrored, gatherDonations} from '../../actions/index'
 import './App.css';
 import AnimalContainer from '../AnimalContainer/AnimalContainer';
 
@@ -12,10 +12,13 @@ class App extends Component {
 
   async componentDidMount() {
     let data;
+    let donations;
     try{
       this.props.loading(true)
       data = await fetchAnimals();
       this.props.handleFetch(data)
+      donations = await fetchDonations()
+      this.props.handleSecondFetch(donations)
       this.props.loading(false)
     } catch {
       this.props.handleError(data)
@@ -44,6 +47,7 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   handleFetch: data => dispatch(gatherData(data)),
+  handleSecondFetch: donations => dispatch(gatherDonations(donations)),
   loading: bool => dispatch(isLoading(bool)),
   handleError: message => dispatch(hasErrored(message))
 })

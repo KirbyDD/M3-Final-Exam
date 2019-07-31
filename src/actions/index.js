@@ -3,6 +3,11 @@ export const gatherData = data => ({
   data
 })
 
+export const gatherDonations = donations => ({
+  type: 'GATHER_DONATIONS',
+  donations
+})
+
 export const isLoading = bool => ({
   type: 'IS_LOADING',
   bool
